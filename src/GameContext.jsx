@@ -6,11 +6,14 @@ const GameContextProvider = ({children}) => {
     const [boardHistory, setBoardHistory] = useState([Array(9).fill(null)])
     const [currentMoveNumber, setCurrentMoveNumber]= useState(0)
     const [xIsNext, setXIsNext] = useState(true)
-    const winner = calculateWinner(boardHistory[currentMoveNumber])
+    const currentBoard = boardHistory[currentMoveNumber]
+    const winner = calculateWinner(currentBoard)
+    const draw = !currentBoard.includes(null) 
+ 
 
     const handleClick = (boxNumber) => {
     
-        const currentBoard = boardHistory[currentMoveNumber]
+ 
         const boardCopy = [... currentBoard]
         if (winner || boardCopy[boxNumber]) return
         boardCopy[boxNumber] = xIsNext ? "X" : "O"
@@ -34,7 +37,8 @@ const GameContextProvider = ({children}) => {
             xIsNext,
             winner,
             handleClick,
-            jumpTo
+            jumpTo,
+            draw
         }}>
             {children}
         </GameContext.Provider>

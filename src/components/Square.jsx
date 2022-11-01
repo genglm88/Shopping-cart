@@ -19,9 +19,10 @@ const BlinkSquare = styled(StyledSquare)`
 `
 
 const Square = ({boxNum,value, onClick}) => {
-    const {winner} = useContext(GameContext)
+    const {winner, draw} = useContext(GameContext)
     let isMatch = false
-    if (winner) {isMatch = winner.includes(boxNum)} 
+    if (draw) {isMatch = true}
+    if (winner)  {isMatch = winner.includes(boxNum) }
     return (
           !isMatch ? 
                 <StyledSquare  onClick={onClick} isMatch = {isMatch}>

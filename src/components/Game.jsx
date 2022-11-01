@@ -29,7 +29,7 @@ const BlinkText = styled(StyledStatusMsg)`
 `
 
 const Game = () => {
-    const {boardHistory, currentMoveNumber, xIsNext, winner, handleClick, jumpTo} = useContext(GameContext)
+    const {boardHistory, currentMoveNumber, xIsNext, winner, handleClick, jumpTo, draw} = useContext(GameContext)
         
     const renderMoves = () => (
         boardHistory.map((_board, moveNumber)=> {
@@ -59,7 +59,8 @@ const Game = () => {
                 />
                        
                 {winner  &&  <BlinkText>{"Winner: "+ squares[winner[0]]} </BlinkText> }
-                {!winner && "Next Player: " + (xIsNext? "X":"O")} 
+                {!winner && draw && <BlinkText>{"It's a draw!"} </BlinkText>}
+                {!winner && !draw && "Next Player: " + (xIsNext? "X":"O")} 
                         
            
                 {renderMoves()} 
