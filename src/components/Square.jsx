@@ -4,7 +4,9 @@ import {GameContext} from "../GameContext"
 
 const StyledSquare =styled.button`
     background-color: ${({isMatch})=> isMatch ? "yellow" :"lightblue"};
-    border: 2px solid darkblue;
+    border: 1px solid darkblue;
+    width: 100px;
+    height: 100px;
     font-weight: 800;
     font-size: 30px;
     cursor: pointer;
