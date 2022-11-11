@@ -1,15 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from "react"
+import ReactDOM from "react-dom"
 import {BrowserRouter as Router} from "react-router-dom"
-import App from './app'
+
+import App from "./App"
+import {ShoppingContextProvider} from "./shoppingContext"
+
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
-
-
-  </React.StrictMode>
-)
+    <ShoppingContextProvider>
+        <Router>
+            <App />
+        </Router>
+    </ShoppingContextProvider>
+      )
